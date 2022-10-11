@@ -18,4 +18,11 @@ class LarastatsWingmanServiceProvider extends PackageServiceProvider
             ->name('larastats-wingman')
             ->hasConfigFile();
     }
+
+    public function packageRegistered()
+    {
+        $this->app->bind(LarastatsWingman::class, function () {
+            return new LarastatsWingman();
+        });
+    }
 }
