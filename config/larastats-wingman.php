@@ -7,5 +7,5 @@ return [
         'exception_logger' => [
             'endpoint' => env('LARASTATS_EXCEPTION_LOGGER_ENDPOINT', '/api/exceptions'),
         ],
-    ]
+    ],
 ];

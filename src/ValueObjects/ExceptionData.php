@@ -2,8 +2,8 @@
 
 namespace Taecontrol\LarastatsWingman\ValueObjects;
 
-use Throwable;
 use Illuminate\Support\Carbon;
+use Throwable;
 
 class ExceptionData
 {

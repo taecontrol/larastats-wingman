@@ -10,9 +10,9 @@ class LarastatsWingman
 {
     public function captureException(Throwable $exception)
     {
-        $exceptionLoggerUrl = config('larastats-wingman.larastats.domain') . config('larastats-wingman.larastats.exception_logger.endpoint');
+        $exceptionLoggerUrl = config('larastats-wingman.larastats.domain').config('larastats-wingman.larastats.exception_logger.endpoint');
         $exceptionData = ExceptionData::from($exception);
 
-        Http::post($exceptionLoggerUrl, (array)$exceptionData);
+        Http::post($exceptionLoggerUrl, (array) $exceptionData);
     }
 }
