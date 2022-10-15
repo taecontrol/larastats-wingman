@@ -13,6 +13,11 @@ class LarastatsWingman
         $exceptionLoggerUrl = config('larastats-wingman.larastats.domain').config('larastats-wingman.larastats.exception_logger.endpoint');
         $exceptionData = ExceptionData::from($exception);
 
-        Http::post($exceptionLoggerUrl, (array) $exceptionData);
+        $data = array_merge(
+            $exceptionData->toArray(),
+            ['api_token' => config('larastats-wingman.site.api_token')],
+        );
+
+        Http::post($exceptionLoggerUrl, $data);
     }
 }
