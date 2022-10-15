@@ -2,8 +2,8 @@
 
 namespace Taecontrol\LarastatsWingman\ValueObjects;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Carbon;
 
 class ExceptionData implements Arrayable
 {
