@@ -2,9 +2,10 @@
 
 namespace Taecontrol\LarastatsWingman\ValueObjects;
 
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
 use Throwable;
+use Illuminate\Support\Carbon;
+use Illuminate\Contracts\Support\Arrayable;
 
 class ExceptionData implements Arrayable
 {
@@ -13,6 +14,7 @@ class ExceptionData implements Arrayable
         public readonly string $type,
         public readonly array $trace,
         public readonly int $line,
+        public readonly Request $request,
         public readonly Carbon $thrown_at,
     ) {
     }
@@ -24,6 +26,7 @@ class ExceptionData implements Arrayable
             type: $e->getFile(),
             trace: $e->getTrace(),
             line: $e->getLine(),
+            request: request(),
             thrown_at: now(),
         );
     }
@@ -35,6 +38,11 @@ class ExceptionData implements Arrayable
             'type' => $this->type,
             'trace' => $this->trace,
             'line' => $this->line,
+            'request' => [
+                'url' => $this->request->url(),
+                'params' => $this->request->all(),
+                'headers' => $this->request->headers->all(),
+            ],
             'thrown_at' => $this->thrown_at->utc(),
         ];
     }
