@@ -2,15 +2,15 @@
 
 namespace Taecontrol\LarastatsWingman;
 
+use Throwable;
 use Illuminate\Support\Facades\Http;
 use Taecontrol\LarastatsWingman\ValueObjects\ExceptionData;
-use Throwable;
 
 class LarastatsWingman
 {
     public function captureException(Throwable $exception)
     {
-        $exceptionLoggerUrl = config('larastats-wingman.larastats.domain').config('larastats-wingman.larastats.exception_logger.endpoint');
+        $exceptionLoggerUrl = config('larastats-wingman.larastats.domain') . config('larastats-wingman.larastats.exception_logger.endpoint');
         $exceptionData = ExceptionData::from($exception);
 
         $data = array_merge(

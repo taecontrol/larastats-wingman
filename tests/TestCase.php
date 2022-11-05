@@ -2,8 +2,8 @@
 
 namespace Taecontrol\LarastatsWingman\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Taecontrol\LarastatsWingman\LarastatsWingmanServiceProvider;
 
 class TestCase extends Orchestra
@@ -23,7 +23,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Taecontrol\\LarastatsWingman\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Taecontrol\\LarastatsWingman\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
