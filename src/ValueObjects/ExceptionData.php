@@ -2,10 +2,10 @@
 
 namespace Taecontrol\LarastatsWingman\ValueObjects;
 
-use Illuminate\Http\Request;
-use Throwable;
-use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Throwable;
 
 class ExceptionData implements Arrayable
 {
