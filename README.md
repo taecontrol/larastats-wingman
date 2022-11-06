@@ -36,6 +36,12 @@ public function register()
 ...
 ```
 
+Define the next `.env` vars:
+```dotenv
+LARASTATS_DOMAIN=https://larastats.test
+LARASTATS_DOMAIN=********************
+```
+
 ## Testing
 
 ```bash
