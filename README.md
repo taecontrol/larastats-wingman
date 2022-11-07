@@ -26,12 +26,14 @@ On the `Handler.php` class, add the next code to capture all exceptions:
  */
 public function register()
 {
-    $this->reportable(function (Throwable $e) {
-        /** @var LarastatsWingman $wingman */
-        $wingman = app(LarastatsWingman::class);
+    if (! app()->environment('testing')) {
+        $this->reportable(function (Throwable $e) {
+            /** @var LarastatsWingman $wingman */
+            $wingman = app(LarastatsWingman::class);
 
-        $wingman->captureException($e);
-    });
+            $wingman->captureException($e);
+        });
+    }
 }
 ...
 ```
@@ -39,7 +41,7 @@ public function register()
 Define the next `.env` vars:
 ```dotenv
 LARASTATS_DOMAIN=https://larastats.test
-LARASTATS_DOMAIN=********************
+LARASTATS_SITE_API_TOKEN=********************
 ```
 
 ## Testing
