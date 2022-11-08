@@ -12,6 +12,7 @@ class ExceptionData implements Arrayable
     public function __construct(
         public readonly string $message,
         public readonly string $type,
+        public readonly string $file,
         public readonly array $trace,
         public readonly int $line,
         public readonly Request $request,
@@ -23,7 +24,8 @@ class ExceptionData implements Arrayable
     {
         return new self(
             message: $e->getMessage(),
-            type: $e->getFile(),
+            type: get_class($e),
+            file: $e->getFile(),
             trace: $e->getTrace(),
             line: $e->getLine(),
             request: request(),
@@ -36,6 +38,7 @@ class ExceptionData implements Arrayable
         return [
             'message' => $this->message,
             'type' => $this->type,
+            'file' => $this->file,
             'trace' => $this->trace,
             'line' => $this->line,
             'request' => [
